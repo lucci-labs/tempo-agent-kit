@@ -21,5 +21,4 @@ export interface AgentPlugin<TActions = Record<string, any>> {
   name: string;
   actions: TActions;
   tools: AgentTool[];
-  initialize(agent: TempoAgent<any>): void;
 }

@@ -7,6 +7,7 @@ export async function get_balance(
   agent: TempoAgent,
   address?: string,
 ): Promise<number> {
+  console.log("agent", agent);
   console.log(`[Plugin Action] get_balance called for ${address || "self"}`);
   // Mocked response
   return 100.5;

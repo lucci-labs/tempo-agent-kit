@@ -1,4 +1,4 @@
-import { createTempoAgent } from "@tempo-agent-kit/core"
+import { createTempoAgent, type AgentTool } from "@tempo-agent-kit/core"
 import { tokenPlugin } from "@tempo-agent-kit/token-plugin"
 
 async function main() {
@@ -7,7 +7,7 @@ async function main() {
     walletClient: null as any,
   }).use(tokenPlugin);
 
-  console.log("Agent Tools:", agent.tools.map((t: any) => t));
+  console.log("Agent Tools:", agent.tools.map((t: AgentTool) => t.name));
 
   // Test the actions from the plugin
   const balance = await agent.actions.get_balance();

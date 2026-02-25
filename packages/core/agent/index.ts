@@ -29,19 +29,17 @@ export function createTempoAgent<TActions = Record<string, never>>(
   };
 
   function use(base: any) {
-    return <P extends AgentPlugin>(plugin: P) => {
+    return <P extends AgentPlugin<any>>(plugin: P) => {
       if (plugins.has(plugin.name)) {
         return base;
       }
-
-      plugin.initialize(base);
 
       const newActions = { ...base.actions } as Record<string, unknown>;
       for (const [actionName, action] of Object.entries(plugin.actions)) {
         if (newActions[actionName]) {
           throw new Error(`Action ${actionName} already exists in actions`);
         }
-        newActions[actionName] = action.bind(plugin);
+        newActions[actionName] = (...args: any[]) => (action as any)(base, ...args);
       }
 
       const newTools = [...base.tools];
