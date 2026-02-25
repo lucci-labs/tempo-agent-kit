@@ -5,7 +5,7 @@ export interface AgentTool {
   name: string;
   description: string;
   similes: string[];
-  schema: z.ZodType<any>;
+  schema: z.AnyZodObject;
   execute(agent: TempoAgent, input: Record<string, any>): any | Promise<any>;
 }
 

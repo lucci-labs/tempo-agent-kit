@@ -7,8 +7,8 @@ export const toVercalAITools = (agent: TempoAgent): Record<string, Tool> => {
   for (const t of agent.tools) {
     tools[t.name] = tool({
       description: `${t.description}${t.similes.length > 0 ? ` (also known as: ${t.similes.join(", ")})` : ""}`,
-      inputSchema: t.schema as any,
-      execute: async (input: any) => {
+      inputSchema: t.schema,
+      execute: async (input: Record<string, any>) => {
         return t.execute(agent, input);
       },
     });

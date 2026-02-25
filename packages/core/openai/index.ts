@@ -12,8 +12,8 @@ export const toOpenAITools = (agent: TempoAgent): Record<string, Tool> => {
     tools[t.name] = tool({
       name: t.name,
       description: `${t.description}${t.similes.length > 0 ? ` (also known as: ${t.similes.join(", ")})` : ""}`,
-      parameters: t.schema as any,
-      execute: async (input: any) => {
+      parameters: t.schema,
+      execute: async (input: Record<string, any>) => {
         return t.execute(agent, input);
       },
     });

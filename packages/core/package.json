@@ -20,6 +20,21 @@
       "types": "./openai/index.ts",
       "import": "./openai/index.mjs",
       "default": "./openai/index.ts"
+    },
+    "./langchain": {
+      "types": "./langchain/index.ts",
+      "import": "./langchain/index.mjs",
+      "default": "./langchain/index.ts"
+    },
+    "./anthropic": {
+      "types": "./anthropic/index.ts",
+      "import": "./anthropic/index.mjs",
+      "default": "./anthropic/index.ts"
+    },
+    "./openrouter": {
+      "types": "./openrouter/index.ts",
+      "import": "./openrouter/index.mjs",
+      "default": "./openrouter/index.ts"
     }
   },
   "devDependencies": {
@@ -30,9 +45,12 @@
     "viem": "^2.46.3"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@langchain/core": "^1.1.28",
     "@openai/agents": "^0.5.1",
     "ai": "^6.0.99",
     "openai": "^4.85.4",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.25.1"
   }
 }
