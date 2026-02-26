@@ -23,7 +23,7 @@ async function main() {
   console.log("Agent Tools:", agent.tools.map((t: AgentTool) => t.name));
 
   // Test the actions from the plugin
-  const balance = await agent.actions.get_balance();
+  const balance = await agent.actions.get_balance("0x20c000000000000000000000e988df03afa8ccdb");
   console.log("Balance Result:", balance);
 
   const transferResult = await agent.actions.transfer("0x123", 1.5);

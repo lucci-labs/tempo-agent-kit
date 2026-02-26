@@ -1,16 +1,24 @@
 import type { TempoAgent } from "@tempo-agent-kit/core";
+import { type Client, type Address } from "viem";
+import { type TempoActions } from "viem/tempo";
 
 /**
  * Get the balance of the native token or a specific token.
  */
 export async function get_balance(
-  agent: TempoAgent,
-  address?: string,
-): Promise<number> {
-  console.log("agent", agent);
-  console.log(`[Plugin Action] get_balance called for ${address || "self"}`);
-  // Mocked response
-  return 100.5;
+  agent: TempoAgent<Client & TempoActions>,
+  tokenAddress: string,
+): Promise<string> {
+  const address = agent.client.account?.address;
+  if (!address) {
+    throw new Error("No wallet address connected to agent");
+  }
+  const balance = await agent.client.token.getBalance({
+    account: address,
+    token: tokenAddress as Address,
+  });
+
+  return balance.toString();
 }
 
 /**

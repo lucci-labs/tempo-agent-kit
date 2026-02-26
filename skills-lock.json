@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "tempo": {
+      "source": "tempoxyz/agent-skills",
+      "sourceType": "github",
+      "computedHash": "fa136ee32934f9de89308f50cb539696d3e97e8f22320e7d620b52f5b1f75860"
+    }
+  }
+}
